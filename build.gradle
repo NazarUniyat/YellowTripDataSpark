@@ -24,15 +24,15 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
 }
 
-//jar {
-//    zip64 true
-//    from {
-//        configurations.compile.collect {
-//            it.isDirectory() ? it : zipTree(it)
-//        }
-//    }
-//    manifest {
-//        attributes "Main-Class": "spark.AverageTipCalculationSpark"
-//    }
-//    exclude ('META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA')
-//}
+jar {
+    zip64 true
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    manifest {
+        attributes "Main-Class": "spark.AverageTipCalculationSpark"
+    }
+    exclude ('META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA')
+}
