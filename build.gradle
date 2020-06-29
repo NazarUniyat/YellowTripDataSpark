@@ -32,7 +32,7 @@ jar {
         }
     }
     manifest {
-        attributes "Main-Class": "spark.AverageTipCalculationSpark"
+        attributes "Main-Class": "com.course.spark.AverageTipCalculationSpark"
     }
     exclude ('META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA')
 }
