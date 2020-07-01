@@ -8,7 +8,7 @@ import org.apache.spark.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.course.plainJava.FieldMapper.*;
+import static com.course.utils.FieldMapper.*;
 import static org.apache.spark.sql.functions.avg;
 import static org.apache.spark.sql.functions.col;
 
@@ -37,9 +37,9 @@ public class AverageTipCalculationSpark {
         Dataset<TripTypedRow> tripItem = mergedTripRow
                 .map((MapFunction<Row, TripTypedRow>) row ->
                         new TripTypedRow(
-                                parseDateTime(row.<String>getAs("pickUpDateTime")),
-                                parseDistance(row.<String>getAs("tripDistance")),
-                                parsePayment(row.<String>getAs("paymentType")),
+                                mapDateTime(row.<String>getAs("pickUpDateTime")),
+                                mapDistance(row.<String>getAs("tripDistance")),
+                                mapPayment(row.<String>getAs("paymentType")),
                                 Float.parseFloat(row.<String>getAs("tip"))
                         ), Encoders.bean(TripTypedRow.class));
 
@@ -50,8 +50,8 @@ public class AverageTipCalculationSpark {
 
     private static Map<String, String> parseParameters(String[] args) {
         HashMap<String, String> params = new HashMap<>();
-        for (int i = 0; i < args.length; i++) {
-            String[] config = args[i].split("=");
+        for (String arg : args) {
+            String[] config = arg.split("=");
             params.put(config[0], config[1]);
         }
         return params;

@@ -11,7 +11,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.course.plainJava.FieldMapper.*;
+import static com.course.utils.FieldMapper.*;
 
 public class AverageTipCalculation {
     public static void main(String[] args) {
@@ -35,9 +35,9 @@ public class AverageTipCalculation {
     private static Function<String, TripTip> mapToItem = (line) -> {
         String[] p = line.split(",");
         Trip trip = new Trip();
-        trip.setPickUpDateTime(parseDateTime(p[1]));
-        trip.setTripDistance(parseDistance(p[4]));
-        trip.setPaymentType(parsePayment(p[9]));
+        trip.setPickUpDateTime(mapDateTime(p[1]));
+        trip.setTripDistance(mapDistance(p[4]));
+        trip.setPaymentType(mapPayment(p[9]));
         TripTip tripTip = new TripTip();
         tripTip.setTrip(trip);
         tripTip.setTip(Double.parseDouble(p[13]));
