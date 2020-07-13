@@ -1,8 +1,11 @@
-package com.course.plainJava;
+package com.course.utils;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class FieldMapper {
 
-    public static String parseDateTime(String dateToParse) {
+    public String mapDateTime(String dateToParse) {
         int hour = Integer.parseInt(dateToParse.substring(11, 13));
         String time = "Night";
         if (hour > 5 && hour < 12)
@@ -14,7 +17,7 @@ public class FieldMapper {
         return time;
     }
 
-    public static String parseDistance(String distanceToParse) {
+    public String mapDistance(String distanceToParse) {
         float parsedDistance = Float.parseFloat(distanceToParse);
         String distance = "Short";
         if (parsedDistance > 2 && parsedDistance < 20)
@@ -24,7 +27,7 @@ public class FieldMapper {
         return distance;
     }
 
-    public static String parsePayment(String paymentToParse) {
+    public String mapPayment(String paymentToParse) {
         int parsedPaymentType = Integer.parseInt(paymentToParse);
         String paymentType = "Credit card";
         if (parsedPaymentType == 2)
