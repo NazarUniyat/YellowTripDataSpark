@@ -12,7 +12,7 @@ import static com.course.utils.FieldMapper.*;
 import static org.apache.spark.sql.functions.avg;
 import static org.apache.spark.sql.functions.col;
 
-public class AverageTipCalculationSpark {
+public class AverageTipCalculationWithDynamicConfig {
 
     private static final String EXECUTOR_MEMORY = "spark.executor.memory";
     private static final String EXECUTOR_CORES = "spark.executor.cores";
@@ -44,7 +44,6 @@ public class AverageTipCalculationSpark {
                         ), Encoders.bean(TripTypedRow.class));
 
         tripItem.groupBy("pickUpDateTime", "tripDistance", "paymentType").agg(avg("tip")).show(100);
-
 
     }
 
