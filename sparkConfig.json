@@ -1,0 +1,23 @@
+[
+   {
+      "classification":"spark",
+      "properties":{
+         "maximizeResourceAllocation":"true"
+      }
+   },
+   {
+      "classification":"spark-defaults",
+      "properties":{
+         "spark.dynamicAllocation.enabled":"false"
+      }
+   },
+   {
+      "classification":"yarn-site",
+      "properties":{
+         "yarn.acl.enable":"true",
+         "yarn.resourcemanager.scheduler.class":"org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler",
+         "yarn.nodemanager.resource.memory-mb":"29696",
+         "yarn.scheduler.maximum-allocation-mb":"29696"
+      }
+   }
+]
